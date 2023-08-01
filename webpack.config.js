@@ -15,6 +15,10 @@ module.exports = {
         include: path.resolve(__dirname, "src"),
         exclude: /node_modules/,
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {

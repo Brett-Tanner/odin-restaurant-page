@@ -1,1 +1,3 @@
-alert("hey there, I'm working");
+import { generatePage } from "./initialSetup";
+
+generatePage();
