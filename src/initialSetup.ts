@@ -1,3 +1,4 @@
+// Import all my images
 import Beans from "./images/beans.jpg";
 import Cake from "./images/cake.jpg";
 import Cheese from "./images/cheese.jpg";
@@ -9,6 +10,9 @@ import Noodles from "./images/noodles.jpg";
 import Pho from "./images/pho.jpg";
 import Vika from "./images/vika.jpg";
 import Yoghurt from "./images/yoghurt.jpg";
+
+// Import Tailwind styles
+import "./style.css";
 
 const main = document.getElementById("content");
 const foodPics = [
@@ -30,6 +34,7 @@ type heading = "h1" | "h2" | "h3" | "h4" | "h5";
 function addHeading(text: string, headingSize: heading = "h1") {
   const heading = document.createElement(headingSize);
   heading.innerText = text;
+  heading.classList.add("bg-red-900", "text-white");
   main?.appendChild(heading);
 }
 

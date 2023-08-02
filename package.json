@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack serve --open",
+    "build": "export NODE_ENV=production && webpack",
+    "dev": "NODE_ENV=development webpack serve --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +19,14 @@
   },
   "homepage": "https://github.com/Brett-Tanner/odin-restaurant-page#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
+    "postcss": "^8.4.27",
+    "postcss-loader": "^7.3.3",
+    "postcss-preset-env": "^9.1.0",
+    "style-loader": "^3.3.3",
+    "tailwindcss": "^3.3.3",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
