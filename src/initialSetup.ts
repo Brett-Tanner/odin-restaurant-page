@@ -40,23 +40,11 @@ function addBlurb(text: string) {
     "text-center",
     "font-body",
     "text-2xl",
-    "basis-1/4"
+    "basis-1/4",
+    "grow",
+    "p-12"
   );
   main?.appendChild(blurb);
-}
-
-function addHeading(text: string, headingSize: heading = "h1") {
-  const heading = document.createElement(headingSize);
-  heading.innerText = text;
-  heading.classList.add(
-    "text-5xl",
-    "text-amber-700",
-    "font-heading",
-    "w-screen",
-    "shrink-0",
-    "text-center"
-  );
-  main?.prepend(heading);
 }
 
 function addImage(path: string, rows: HTMLCollection | undefined) {
@@ -68,7 +56,8 @@ function addImage(path: string, rows: HTMLCollection | undefined) {
     "max-w-full",
     "rounded-lg",
     "hover:scale-105",
-    "transition-transform"
+    "transition-transform",
+    "duration-300"
   );
   const div = document.createElement("div");
   div.appendChild(img);
@@ -77,30 +66,56 @@ function addImage(path: string, rows: HTMLCollection | undefined) {
     if (!rows[designatedRow]) {
       throw new Error("Row missing");
     }
-    console.log(rows, designatedRow, "pic count", foodPics.length);
     rows[designatedRow].appendChild(div);
   } else {
     gallery?.appendChild(div);
   }
 }
 
+function addNav() {
+  const nav = document.createElement("nav");
+  nav.classList.add("flex", "flex-col", "gap-4", "self-start", "grow");
+  const menu = document.createElement("a");
+  menu.innerText = "Menu";
+  menu.id = "menuLink";
+  const contact = document.createElement("a");
+  contact.innerText = "Contact";
+  contact.id = "contactLink";
+  [menu, contact].forEach((link) => {
+    link.href = "#";
+    link.classList.add(
+      "font-heading",
+      "text-amber-700",
+      "text-2xl",
+      "p-4",
+      "hover:text-amber-950",
+      "hover:bg-amber-700",
+      "active:bg-amber-800",
+      "transition-all",
+      "duration-300"
+    );
+  });
+  nav.append(menu, contact);
+  main?.prepend(nav);
+}
+
 function addRows(picArray: any[]) {
   const numRows = Math.ceil(picArray.length / 4);
   for (let index = 0; index < numRows; index++) {
     const div = document.createElement("div");
-    div.classList.add("grid", "gap-4");
+    div.classList.add("grid", "gap-3");
     gallery?.appendChild(div);
   }
   return gallery?.children;
 }
 
 export function generatePage() {
-  addHeading("Welcome to Vika's fine dining!", "h1");
+  addNav();
   const rows = addRows(foodPics);
   foodPics.forEach((pic) => {
     addImage(pic, rows);
   });
   addBlurb(
-    "Our restaurant offers a range of fine dining experiences, all prepared by expert chef Viktoriia Kasimova. If you're lucky you might even spot a wild Brett grazing on some of our delicacies, in between eating his staple meal of rice and unflavoured chicken!"
+    "Our restaurant offers a range of fine dining experiences, all prepared by expert chef Viktoriia Kasimova. If you're lucky you may even witness a wild Brett grazing on our delicacies, in between his staple meals of rice and unflavoured chicken!"
   );
 }
