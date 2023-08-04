@@ -1,9 +1,12 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').config} */
 module.exports = {
-  content: ["./dist/*.{html,js}"],
-  darkMode: "class",
+  content: ["./src/*.ts", "./dist/*.html"],
   theme: {
     extend: {},
+    fontFamily: {
+      heading: ["Cinzel", "serif"],
+      body: ["Rouge Script", "cursive"],
+    },
   },
   plugins: [],
 };
