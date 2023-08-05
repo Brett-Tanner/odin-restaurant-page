@@ -7,6 +7,9 @@ module.exports = {
       heading: ["Cinzel", "serif"],
       body: ["Rouge Script", "cursive"],
     },
+    gridTemplateRows: {
+      layout: "100px, 1fr",
+    },
   },
   plugins: [],
 };
